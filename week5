@@ -1,0 +1,23 @@
+insert into dept values(30, 'CSE, 30000);
+select * from dept;
+
+insert into emp values('&name','&e_no,'&job', '&dept_no, '&salary');
+select * from emp;
+
+Select name, job from emp;
+
+Create table pseudo as select from emp;
+insert into pseudo (select * from emp);
+
+select from emp where dept_no=3০;
+
+select distinct dept_no From emp;
+
+select * from emp order by salary;
+desc;
+
+select * from emp order by salary;
+
+update emp set salary = 15000 where job = 'manager';
+
+delete from emp where job='lecturer';
