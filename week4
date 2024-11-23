@@ -1,0 +1,7 @@
+Create table EMP(emp_no number (6), e_name varchar (20),job varchar(10), dept_no number(3), SAL number(7,2), primary key(emp_no));
+alter table EMP add(experience number(10));
+alter table EMP modify (job varchar(30));
+create table EMP1 (e_name varchar(10); emp_no varchar(10),check(emp_no >100));
+alter table EMP drop column job;
+truncate table EMP;
+desc EMP;
