@@ -1,0 +1,2 @@
+create table bus (bus_no varchar(10), Source  varchar(12), destination varchar(10), couch-type varchar());
+create table ticket(ticket_no varchar(10) Primary key, journey_data varchar(10),age int, dep-time timestamp, sex char(10),Source varchar(10), destination varchar(10),bus_no varchar(10));
