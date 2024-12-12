@@ -1,0 +1,22 @@
+a.	Find the average age of sailors with a rating of 10?
+SELECT AVG(age) AS avg_age
+FROM Sailors
+WHERE rating = 10;
+
+b.	Find the name and age of the oldest sailor?
+SELECT AVG(age) AS avg_age
+FROM Sailors
+WHERE rating = 10;
+
+c.	Find the age of the youngest sailor for each rating level?
+SELECT rating, MIN(age) AS youngest_age
+FROM Sailors
+GROUP BY rating;
+
+d.	Find the average age of sailors for each rating level that has at least two sailors? (group by and Having)
+SELECT rating, AVG(age) AS avg_age
+FROM Sailors
+GROUP BY rating
+HAVING COUNT(*) >= 2;
+
+
