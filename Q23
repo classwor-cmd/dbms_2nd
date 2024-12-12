@@ -1,0 +1,70 @@
+23.	  a) Analyze the problem carefully and come up with the attributes of given entities and relationships.   Identify the primary keys for all the entities. Identify the other keys like candidate keys, partial keys, if any.
+            Entities:  	1. BUS	2. Ticket	3. Passenger
+      Relationships:        1. Reservation	 2. Cancellation
+
+
+Part (a) Analysis: Attributes and Relationships
+Entities and Attributes
+BUS
+
+Attributes:
+Bus_ID (Primary Key)
+Bus_Number (Candidate Key)
+Route
+Capacity
+Driver_Name
+Ticket
+
+Attributes:
+Ticket_ID (Primary Key)
+Passenger_ID (Foreign Key referencing Passenger)
+Bus_ID (Foreign Key referencing Bus)
+Reservation_Date
+Seat_Number
+Passenger
+
+Attributes:
+Passenger_ID (Primary Key)
+Name
+Phone_Number
+Email
+Relationships
+Reservation
+
+Attributes:
+Reservation_ID (Primary Key)
+Passenger_ID (Foreign Key referencing Passenger)
+Bus_ID (Foreign Key referencing Bus)
+Ticket_ID (Foreign Key referencing Ticket)
+Reservation_Date
+Cancellation
+
+Attributes:
+Cancellation_ID (Primary Key)
+Ticket_ID (Foreign Key referencing Ticket)
+Cancellation_Date
+Reason
+----------------
+b) Write a PL/SQL program that uses all cursor operation on reserves data base
+
+DECLARE
+    CURSOR reservation_cursor IS
+        SELECT Reservation_ID, Passenger_ID, Bus_ID, Reservation_Date FROM Reservation;
+
+    v_Reservation reservation_cursor%ROWTYPE;
+BEGIN
+    OPEN reservation_cursor;
+
+    LOOP
+        FETCH reservation_cursor INTO v_Reservation;
+        EXIT WHEN reservation_cursor%NOTFOUND;
+
+        DBMS_OUTPUT.PUT_LINE('Reservation ID: ' || v_Reservation.Reservation_ID || 
+                             ', Passenger ID: ' || v_Reservation.Passenger_ID || 
+                             ', Bus ID: ' || v_Reservation.Bus_ID || 
+                             ', Reservation Date: ' || v_Reservation.Reservation_Date);
+    END LOOP;
+
+    CLOSE reservation_cursor;
+END;
+
