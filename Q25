@@ -1,0 +1,64 @@
+25.	Create a MERCHANT table with the following data and perform the below Operations?
+ 
+Tablename:  MERCHANT100
+Attributes	Datatype	Constraint type
+Mer_id	Varchar2(10)	
+Name	Varchar2(15)	Unique
+age	Integer	
+budget	Number(12,2)	Check >=100000
+---------
+
+CREATE TABLE MERCHANT100 (
+    Mer_id VARCHAR2(10),
+    Name VARCHAR2(15) UNIQUE,
+    Age INTEGER,
+    Budget NUMBER(12,2) CHECK (Budget >= 100000));
+ 
+a.	Add a New column “Address” with data type “Varchar2 (15)” to the existing table.
+ALTER TABLE MERCHANT100
+ADD Address VARCHAR2(15);
+
+b.	Modify the size of “Address” to “varchar2 (35)”.
+ALTER TABLE MERCHANT100
+MODIFY Address VARCHAR2(35);
+
+c.	Drop a column “age” from the table.
+ALTER TABLE MERCHANT100
+DROP COLUMN Age;
+
+d.	Add “Primary key” constraint for the “Mer-Id” Attribute. 
+ALTER TABLE MERCHANT100
+ADD CONSTRAINT pk_mer_id PRIMARY KEY (Mer_id);
+
+e.	Insert 5 records & display them. 
+-- Insert records into the MERCHANT100 table
+INSERT INTO MERCHANT100 (Mer_id, Name, Budget, Address) 
+VALUES ('M001', 'ABC Corp', 200000, '123 Street');
+INSERT INTO MERCHANT100 (Mer_id, Name, Budget, Address) 
+VALUES ('M002', 'XYZ Ltd', 250000, '456 Avenue');
+INSERT INTO MERCHANT100 (Mer_id, Name, Budget, Address) 
+VALUES ('M003', 'LMN Inc', 300000, '789 Road');
+INSERT INTO MERCHANT100 (Mer_id, Name, Budget, Address) 
+VALUES ('M004', 'PQR LLC', 150000, '101 Parkway');
+INSERT INTO MERCHANT100 (Mer_id, Name, Budget, Address) 
+VALUES ('M005', 'RST Group', 120000, '202 Blvd');
+
+-- Display the records
+SELECT * FROM MERCHANT100;
+
+f.	List out different SQL commands? Write their basic structure
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+--------
+INSERT INTO table_name (column1, column2, ...)
+VALUES (value1, value2, ...);
+-----------
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+------
+ALTER TABLE table_name
+DROP COLUMN column_name;
+
