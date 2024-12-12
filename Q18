@@ -1,0 +1,153 @@
+18.	Create tables for following schemas
+        Students(sid: string, name: string, login: string, age: integer, gpa: real)
+Faculty(fid: string, fname: string, sal: real)
+Courses(cid: string, cname: string, credits: integer)
+
+STUDENT TABLE:
+CREATE TABLE Students (
+    sid VARCHAR(50) PRIMARY KEY, 
+    name VARCHAR(100) NOT NULL, 
+    login VARCHAR(100) UNIQUE, 
+    age INTEGER, 
+    gpa REAL);
+FACULTY TABLE:
+CREATE TABLE Faculty (
+    fid VARCHAR(50) PRIMARY KEY, 
+    fname VARCHAR(100) NOT NULL, 
+    sal REAL);
+COURSES TABLE:
+CREATE TABLE Courses (
+    cid VARCHAR(50) PRIMARY KEY, 
+    cname VARCHAR(100) NOT NULL, 
+    credits INTEGER);
+
+
+
+a.	write a sql query to drop a column in students table.
+ALTER TABLE Students
+DROP COLUMN login;
+
+b.	Write a query to rename table students to STUDENT
+ALTER TABLE Students
+RENAME TO STUDENT;
+
+c.	Write a query to insert three rows in each table.
+INSERT INTO Students (sid, name, login, age, gpa)
+VALUES 
+('S1', 'Alice', 'alice@uni.com', 20, 3.8),
+('S2', 'Bob', 'bob@uni.com', 22, 3.5),
+('S3', 'Charlie', 'charlie@uni.com', 21, 3.9);
+----
+INSERT INTO Faculty (fid, fname, sal)
+VALUES 
+('F1', 'Dr. Smith', 75000),
+('F2', 'Dr. Johnson', 80000),
+('F3', 'Dr. Lee', 72000);
+-----
+INSERT INTO Courses (cid, cname, credits)
+VALUES 
+('C1', 'Database Systems', 4),
+('C2', 'Algorithms', 3),
+('C3', 'Operating Systems', 4);
+
+d.	Write about delete, truncate,drop commands with syntax?
+DELETE FROM table_name
+WHERE condition;
+--
+TRUNCATE TABLE table_name;
+----
+DROP TABLE table_name;
+
+e.	Differrence between primary key and unique key
+Here are the answers to your queries:
+
+---
+
+### a. SQL Query to Drop a Column in `Students` Table:
+```sql
+ALTER TABLE Students
+DROP COLUMN login;
+```
+
+---
+
+### b. Query to Rename Table `Students` to `STUDENT`:
+```sql
+ALTER TABLE Students
+RENAME TO STUDENT;
+```
+
+---
+
+### c. Query to Insert Three Rows in Each Table:
+
+**Insert into Students Table:**
+```sql
+INSERT INTO Students (sid, name, login, age, gpa)
+VALUES 
+('S1', 'Alice', 'alice@uni.com', 20, 3.8),
+('S2', 'Bob', 'bob@uni.com', 22, 3.5),
+('S3', 'Charlie', 'charlie@uni.com', 21, 3.9);
+```
+
+**Insert into Faculty Table:**
+```sql
+INSERT INTO Faculty (fid, fname, sal)
+VALUES 
+('F1', 'Dr. Smith', 75000),
+('F2', 'Dr. Johnson', 80000),
+('F3', 'Dr. Lee', 72000);
+```
+
+**Insert into Courses Table:**
+```sql
+INSERT INTO Courses (cid, cname, credits)
+VALUES 
+('C1', 'Database Systems', 4),
+('C2', 'Algorithms', 3),
+('C3', 'Operating Systems', 4);
+```
+
+---
+
+### d. Explanation of `DELETE`, `TRUNCATE`, and `DROP` Commands:
+
+1. **`DELETE`:** Used to remove specific rows from a table.
+   - **Syntax:**
+     ```sql
+     DELETE FROM table_name
+     WHERE condition;
+     ```
+   - Rows can be deleted conditionally.
+   - Logs individual row deletions, allowing rollback.
+
+2. **`TRUNCATE`:** Used to remove all rows from a table.
+   - **Syntax:**
+     ```sql
+     TRUNCATE TABLE table_name;
+     ```
+   - Faster than `DELETE` as it does not log individual row deletions.
+   - Cannot be rolled back.
+
+3. **`DROP`:** Used to delete an entire table or database.
+   - **Syntax to Drop a Table:**
+     ```sql
+     DROP TABLE table_name;
+     ```
+   - **Syntax to Drop a Database:**
+     ```sql
+     DROP DATABASE database_name;
+     ```
+   - Permanently removes the table/database and all its data.
+   - Cannot be rolled back.
+
+---
+
+### e. Difference Between Primary Key and Unique Key:
+
+| **Feature**          | **Primary Key**                           | **Unique Key**                           |
+|-----------------------|-------------------------------------------|------------------------------------------|
+| **Purpose**           | Ensures the uniqueness of each row.       | Ensures uniqueness for a column.         |
+| **Number Allowed**    | Only one per table.                       | Can have multiple unique keys per table. |
+| **NULL Values**       | Does not allow `NULL` values.             | Allows one `NULL` value per column.      |
+| **Index Creation**    | Creates a clustered index automatically.  | Creates a non-clustered index.           |
