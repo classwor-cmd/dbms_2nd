@@ -1,0 +1,49 @@
+2.	Create a table EMPLOYEE with following schema: (Emp_no, E_name, E_address, E_ph_no, Dept_no, Dept_name, Job_id, Salary) 
+Write SQL queries for following question: 
+a. Insert a least 5 rows in the table. 
+b. Display all the information of EMP table.
+c. Update the city of Emp_no-12 with current city as Nagpur. 
+d. List out different SQL commands? Write their basic structure
+
+Create the EMPLOYEE Table
+CREATE TABLE EMPLOYEE (
+    Emp_no INT PRIMARY KEY,
+    E_name VARCHAR(50) NOT NULL,
+    E_address VARCHAR(100),
+    E_ph_no VARCHAR(15) UNIQUE,
+    Dept_no INT,
+    Dept_name VARCHAR(50),
+    Job_id VARCHAR(20),
+    Salary DECIMAL(10, 2));
+
+Insert at least 5 rows into the table:
+INSERT INTO EMPLOYEE (Emp_no, E_name, E_address, E_ph_no, Dept_no, Dept_name, Job_id, Salary)
+VALUES
+(1, 'John', 'Mumbai', '9876543210', 101, 'MECH', 'Engineer', 45000.00),
+(2, 'James', 'Delhi', '9876543220', 102, 'SALES', 'Manager', 60000.00),
+(3, 'Sophia', 'Bangalore', '9876543230', 103, 'IT', 'Developer', 55000.00),
+(4, 'Emma', 'Hyderabad', '9876543240', 104, 'HR', 'HR Manager', 50000.00),
+(5, 'Robert', 'Chennai', NULL, 105, 'FINANCE', 'Analyst', 48000.00);
+
+Display all the information of the EMPLOYEE table:
+SELECT * 
+FROM EMPLOYEE;
+
+
+ Update the city of Emp_no 12 to Nagpur:
+UPDATE EMPLOYEE
+SET E_address = 'Nagpur'
+WHERE Emp_no = 12;
+
+
+
+Command Type	Description	                                     Example
+DDL        	Defines the structure of database objects.	        CREATE TABLE EMPLOYEE (...);
+DML       	Manipulates data in the database.	                  INSERT INTO EMPLOYEE VALUES (...);
+DQL       	Queries data from tables.	                          SELECT * FROM EMPLOYEE;
+DCL        	Controls access to data.                           	GRANT SELECT ON EMPLOYEE TO user;
+TCL       	Manages transactions within the database.          	COMMIT;
+
+
+
+
