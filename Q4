@@ -1,0 +1,43 @@
+4.	Create a table EMPLOYEE with following schema: 
+            
+Write SQL queries for following question: 
+a.	Count number of employee names from employee table.
+b.	Find the Maximum age from employee table.
+c.	Find the Minimum age from employee table.
+d.	List out the types of notations used in ER-Diagram 
+
+
+Create the EMPLOYEE Table:
+CREATE TABLE EMPLOYEE (E_id INT PRIMARY KEY,E_name VARCHAR(50),Age INT, Salary DECIMAL(10, 2));
+
+
+
+Insert Data into the Table:
+INSERT INTO EMPLOYEE (E_id, E_name, Age, Salary)
+VALUES 
+(101, 'Anu', 22, 9000),
+(102, 'Shane', 29, 8000),
+(103, 'Rohan', 34, 6000),
+(104, 'Scott', 44, 10000),
+(105, 'Tiger', 35, 8000),
+(106, 'Alex', 27, 7000),
+(107, 'Abhi', 29, 8000);
+
+
+
+
+
+Count the number of employee names:
+SELECT COUNT(E_name) AS EmployeeCount
+FROM EMPLOYEE;
+
+
+Find the maximum age from the EMPLOYEE table:
+SELECT MAX(Age) AS MaxAge
+FROM EMPLOYEE;
+
+
+
+Find the minimum age from the EMPLOYEE table:
+SELECT MIN(Age) AS MinAge
+FROM EMPLOYEE;
