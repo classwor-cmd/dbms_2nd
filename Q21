@@ -1,0 +1,52 @@
+
+21.	 Create a table called EMP with the following structure.
+Name	Type
+----------  	----------------------
+EMPNO 		NUMBER(6)
+ENAME 		VARCHAR2(20)
+JOB                             VARCHAR2(10)
+DEPTNO                    NUMBER(3)
+SAL                             NUMBER(7,2)
+
+
+CREATE TABLE EMP (
+    EMPNO NUMBER(6) PRIMARY KEY,
+    ENAME VARCHAR2(20),
+    JOB VARCHAR2(10),
+    DEPTNO NUMBER(3),
+    SAL NUMBER(7,2));
+
+     Create Dept table with the following structure.
+
+Name	                Type
+---------        --- ---------------------
+DEPTNO	NUMBER(2)
+DNAME 	 VARCHAR2(10)
+            LOC	              VARCHAR2(10)
+
+CREATE TABLE DEPT (
+    DEPTNO NUMBER(2) PRIMARY KEY,
+    DNAME VARCHAR2(10),
+    LOC VARCHAR2(10));
+
+i) Add a column experience to the emp table.
+ALTER TABLE EMP
+ADD EXPERIENCE NUMBER(2);
+
+ii) Modify the column width of the job field of emp table.
+ALTER TABLE EMP
+MODIFY JOB VARCHAR2(20);
+
+iii) create the emp1 table with ename and empno, add constraints to check the empno
+  value while entering (i.e) empno > 100
+CREATE TABLE EMP1 (
+    EMPNO NUMBER(6) CHECK (EMPNO > 100),
+    ENAME VARCHAR2(20));
+
+iv) Drop any column in the  emp table.
+ALTER TABLE EMP
+DROP COLUMN EXPERIENCE;
+
+v) Rename any column in dept table.
+ALTER TABLE DEPT
+RENAME COLUMN LOC TO LOCATION;
