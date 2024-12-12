@@ -1,0 +1,33 @@
+5.	Create a table EMPLOYEE with following schema: 
+CREATE TABLE EMPLOYEE (
+    E_id NUMBER PRIMARY KEY,
+    E_name VARCHAR2(50),
+    Age NUMBER,
+    Salary NUMBER);
+------
+INSERT INTO EMPLOYEE (E_id, E_name, Age, Salary) VALUES (101, 'Anu', 22, 9000);
+INSERT INTO EMPLOYEE (E_id, E_name, Age, Salary) VALUES (102, 'Shane', 29, 8000);
+INSERT INTO EMPLOYEE (E_id, E_name, Age, Salary) VALUES (103, 'Rohan', 34, 6000);
+INSERT INTO EMPLOYEE (E_id, E_name, Age, Salary) VALUES (104, 'Scott', 44, 10000);
+INSERT INTO EMPLOYEE (E_id, E_name, Age, Salary) VALUES (105, 'Tiger', 35, 8000);
+INSERT INTO EMPLOYEE (E_id, E_name, Age, Salary) VALUES (106, 'Alex', 27, 7000);
+INSERT INTO EMPLOYEE (E_id, E_name, Age, Salary) VALUES (107, 'Abhi', 29, 8000);
+
+               
+a.	Find grouped salaries of employees. (group by clause)
+SELECT Salary, COUNT(*) AS Employee_Count
+FROM EMPLOYEE
+GROUP BY Salary;
+
+
+b.	Find salaries of employee in Ascending Order. (order by clause)
+SELECT E_id, E_name, Age, Salary
+FROM EMPLOYEE
+ORDER BY Salary ASC;
+
+c.	Find salaries of employee in Descending Order.
+SELECT E_id, E_name, Age, Salary
+FROM EMPLOYEE
+ORDER BY Salary DESC;
+
+
