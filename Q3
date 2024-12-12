@@ -1,0 +1,44 @@
+3.	Create a table EMPLOYEE with following schema: (Emp_no, E_name, E_address, E_ph_no, Dept_no, Dept_name, Job_id, Salary) 
+Write SQL queries for following question: 
+a. Display the details of Employee who works in department MECH.
+b. Delete the email_id of employee James.
+c. Display the complete record of employees working in SALES Department.
+d.State the difference between primay key,unique key,not null with an example
+
+
+Create the EMPLOYEE Table
+CREATE TABLE EMPLOYEE (
+    Emp_no INT PRIMARY KEY,
+    E_name VARCHAR(50) NOT NULL,
+    E_address VARCHAR(100),
+    E_ph_no VARCHAR(15) UNIQUE,
+    Dept_no INT,
+    Dept_name VARCHAR(50),
+    Job_id VARCHAR(20),
+    Salary DECIMAL(10, 2));
+
+
+Display the details of Employees who work in the department MECH:
+SELECT * 
+FROM EMPLOYEE
+WHERE Dept_name = 'MECH';
+
+
+
+Delete the email ID of employee James:
+Assuming E_ph_no represents the email ID:
+UPDATE EMPLOYEE
+SET E_ph_no = NULL
+WHERE E_name = 'James';
+
+
+
+
+Display the complete record of employees working in the SALES department:
+SELECT * 
+FROM EMPLOYEE
+WHERE Dept_name = 'SALES';
+
+
+
+
