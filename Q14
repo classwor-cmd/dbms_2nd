@@ -1,0 +1,24 @@
+14.	a.Write a PL/SQL program that uses cursor operation on any data base.
+BEGIN
+    FOR emp_record IN (SELECT Emp_no, E_name, Salary FROM EMPLOYEE) LOOP
+        DBMS_OUTPUT.PUT_LINE('Emp_no: ' || emp_record.Emp_no || ', E_name: ' || emp_record.E_name || ', Salary: ' || emp_record.Salary);
+    END LOOP;
+END;
+/
+
+b. Write a PL/SQL program for displaying multiplication of any number
+BEGIN
+    FOR i IN 1..10 LOOP
+        DBMS_OUTPUT.PUT_LINE('5 * ' || i || ' = ' || 5 * i);  -- Change 5 to any number
+    END LOOP;
+END;
+/
+
+c. Write a PL/SQL code for creation of trigger to delete data from a table
+CREATE OR REPLACE TRIGGER trg_after_delete
+AFTER DELETE ON EMPLOYEE
+FOR EACH ROW
+BEGIN
+    DELETE FROM EMPLOYEE_LOG WHERE Emp_no = :OLD.Emp_no;
+END;
+/
