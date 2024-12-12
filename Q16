@@ -1,0 +1,33 @@
+16.	a) Write a PL/SQL code for creation of procedure to view some specified columns from a table.
+CREATE OR REPLACE PROCEDURE view_emp_data AS
+BEGIN
+    FOR emp IN (SELECT Emp_no, E_name FROM EMPLOYEE) LOOP
+        DBMS_OUTPUT.PUT_LINE('Emp_no: ' || emp.Emp_no || ', E_name: ' || emp.E_name);
+    END LOOP;
+END;
+/
+
+
+b) Write a PL/SQL program for displaying factorial of any number.
+
+DECLARE
+    v_num INT := 5; -- Input number (change as needed)
+    v_fact INT := 1;
+BEGIN
+    FOR i IN 1..v_num LOOP
+        v_fact := v_fact * i;
+    END LOOP;
+    DBMS_OUTPUT.PUT_LINE('Factorial of ' || v_num || ' is ' || v_fact);
+END;
+/
+
+c. Write a PL/SQL code for creation of Trigger to insert data into a table.
+CREATE OR REPLACE TRIGGER trg_after_insert
+AFTER INSERT ON EMPLOYEE
+FOR EACH ROW
+BEGIN
+    INSERT INTO EMPLOYEE_LOG (Emp_no, E_name, action)
+    VALUES (:NEW.Emp_no, :NEW.E_name, 'Inserted');
+END;
+/
+
