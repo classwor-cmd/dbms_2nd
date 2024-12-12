@@ -1,0 +1,27 @@
+15.	a. Write a PL/SQL code for modification of procedure to view some specified columns from a table.
+CREATE OR REPLACE PROCEDURE view_emp_data AS
+BEGIN
+    FOR emp IN (SELECT Emp_no, E_name FROM EMPLOYEE) LOOP
+        DBMS_OUTPUT.PUT_LINE('Emp_no: ' || emp.Emp_no || ', E_name: ' || emp.E_name);
+    END LOOP;
+END;
+/
+
+b. Write a PL/SQL program for displaying multiplication of any number
+BEGIN
+    FOR i IN 1..10 LOOP
+        DBMS_OUTPUT.PUT_LINE('7 * ' || i || ' = ' || 7 * i);  -- Change 7 to any number
+    END LOOP;
+END;
+/
+
+c. Write a PL/SQL code for creation of Trigger to update data into a table
+CREATE OR REPLACE TRIGGER trg_after_update
+AFTER UPDATE ON EMPLOYEE
+FOR EACH ROW
+BEGIN
+    INSERT INTO employee_log (Emp_no, action)
+    VALUES (:NEW.Emp_no, 'Salary Updated');
+END;
+/
+
