@@ -1,0 +1,29 @@
+13.	 a. Write a PL/SQL code for creation of procedure to view some specified  columns from a
+       table.    
+CREATE OR REPLACE PROCEDURE view_employee_data AS
+BEGIN
+    FOR emp_record IN (SELECT Emp_no, E_name, Salary FROM EMPLOYEE) LOOP
+        DBMS_OUTPUT.PUT_LINE('Emp_no: ' || emp_record.Emp_no || 
+                             ', E_name: ' || emp_record.E_name || 
+                             ', Salary: ' || emp_record.Salary);
+    END LOOP;
+END;
+/
+
+  b. Write a PL/SQL code for modification of a procedure on specified columns from a table.
+CREATE OR REPLACE PROCEDURE update_employee_salary (
+    p_emp_no IN EMPLOYEE.Emp_no%TYPE,  -- Employee number as input
+    p_new_salary IN EMPLOYEE.Salary%TYPE  -- New salary as input
+) AS
+BEGIN
+    UPDATE EMPLOYEE
+    SET Salary = p_new_salary
+    WHERE Emp_no = p_emp_no;
+     DBMS_OUTPUT.PUT_LINE('Salary updated for Emp_no: ' || p_emp_no);
+END;
+/
+
+
+
+
+
