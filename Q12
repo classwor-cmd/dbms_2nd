@@ -1,0 +1,32 @@
+
+12.	a. Write a PL/SQL code for creation of Trigger to insert  data into a table.
+CREATE OR REPLACE TRIGGER trg_after_insert
+AFTER INSERT ON EMPLOYEE
+FOR EACH ROW
+BEGIN
+    INSERT INTO employee_log (Emp_no, E_name, action)
+    VALUES (:NEW.Emp_no, :NEW.E_name, 'Inserted');
+END;
+/
+
+b. Write a PL/SQL code for creation of trigger to update data into a table
+CREATE OR REPLACE TRIGGER trg_after_update
+AFTER UPDATE ON EMPLOYEE
+FOR EACH ROW
+BEGIN
+    INSERT INTO employee_log (Emp_no, E_name, action)
+    VALUES (:NEW.Emp_no, :NEW.E_name, 'Updated');
+END;
+/
+
+c. Write a PL/SQL code for creation of trigger to delete data from a table
+
+CREATE OR REPLACE TRIGGER trg_after_delete
+AFTER DELETE ON EMPLOYEE
+FOR EACH ROW
+BEGIN
+    INSERT INTO employee_log (Emp_no, E_name, action)
+    VALUES (:OLD.Emp_no, :OLD.E_name, 'Deleted');
+END;
+/
+
