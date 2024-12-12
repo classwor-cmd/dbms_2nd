@@ -1,0 +1,29 @@
+a.	Find the names of sailors who have reserved red boat. (Nested Query)
+SELECT S.sname
+FROM Sailors S
+WHERE S.sid IN (
+    SELECT R.sid
+    FROM Reserves R
+    WHERE R.bid IN (
+        SELECT B.bid
+        FROM Boats B
+        WHERE B.color = 'red'
+    )
+);
+
+b.	Find the names of sailors who have reserved boat number 103. (correlated Nested Query)
+SELECT S.sname
+FROM Sailors S
+WHERE EXISTS (
+    SELECT 1
+    FROM Reserves R
+    WHERE R.sid = S.sid AND R.bid = 103
+);
+
+
+c.	Find the name and age of the oldest sailor?
+SELECT sname, age
+FROM Sailors
+WHERE age = (SELECT MAX(age) FROM Sailors);
+
+
