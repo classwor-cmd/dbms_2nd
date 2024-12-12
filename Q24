@@ -1,0 +1,89 @@
+Create an Employee table with the following data, insert 10 records & display?
+
+Tablename:  EMPLOYEE123
+Attributes	Domain	Constraint type
+Empid	Varchar2(10)	Primary key
+Name	Varchar2(15)	UNIQUE
+Job	Varchar2(10)	
+address	Varchar2(35)	
+Salary	Number(10,2)	
+DOJ	Date	
+
+CREATE TABLE EMPLOYEE123 (
+    Empid VARCHAR2(10) PRIMARY KEY,
+    Name VARCHAR2(15) UNIQUE,
+    Job VARCHAR2(10),
+    Address VARCHAR2(35),
+    Salary NUMBER(10,2),
+    DOJ DATE);
+
+a.	Insert 5 records into employee table 
+INSERT INTO EMPLOYEE123 (Empid, Name, Job, Address, Salary, DOJ) 
+VALUES ('E101', 'Paul', 'Manager', '123 Main St', 75000, TO_DATE('2022-05-15', 'YYYY-MM-DD'));
+
+INSERT INTO EMPLOYEE123 (Empid, Name, Job, Address, Salary, DOJ) 
+VALUES ('E102', 'Peter', 'Analyst', '456 Elm St', 60000, TO_DATE('2020-08-10', 'YYYY-MM-DD'));
+
+INSERT INTO EMPLOYEE123 (Empid, Name, Job, Address, Salary, DOJ) 
+VALUES ('E103', 'Pia', 'Clerk', '789 Oak St', 45000, TO_DATE('2019-04-20', 'YYYY-MM-DD'));
+
+INSERT INTO EMPLOYEE123 (Empid, Name, Job, Address, Salary, DOJ) 
+VALUES ('E104', 'Priya', 'Trainee', '321 Pine St', 30000, TO_DATE('2023-01-12', 'YYYY-MM-DD'));
+
+INSERT INTO EMPLOYEE123 (Empid, Name, Job, Address, Salary, DOJ) 
+VALUES ('E105', 'David', 'Developer', '654 Cedar St', 70000, TO_DATE('2021-02-22', 'YYYY-MM-DD'));
+
+b.	Perform update and delete operation on employee table
+UPDATE EMPLOYEE123
+SET Salary = 80000
+WHERE Empid = 'E105';
+----
+DELETE FROM EMPLOYEE123
+WHERE Empid = 'E103';
+
+c.	Perform Aggregate functions with Syntax and examples
+Syntax of Aggregate Functions:
+
+AVG(): Calculates average value.
+SUM(): Calculates the sum.
+MAX(): Finds the maximum value.
+MIN(): Finds the minimum value.
+COUNT(): Counts the rows.
+--------
+SELECT AVG(Salary) AS Average_Salary FROM EMPLOYEE123;
+--
+SELECT SUM(Salary) AS Total_Salary FROM EMPLOYEE123;
+--
+SELECT MAX(Salary) AS Max_Salary FROM EMPLOYEE123;
+----
+SELECT COUNT(*) AS Total_Employees FROM EMPLOYEE123;
+
+d.	Display the names of employees starting with ‘P’ letter.
+SELECT Name 
+FROM EMPLOYEE123
+WHERE Name LIKE 'P%';
+
+e.	Write a PL/SQL program that uses all cursor operation on reserves data base.
+DECLARE
+    CURSOR emp_cursor IS
+        SELECT Empid, Name, Job, Salary 
+        FROM EMPLOYEE123;
+
+    v_Empid EMPLOYEE123.Empid%TYPE;
+    v_Name EMPLOYEE123.Name%TYPE;
+    v_Job EMPLOYEE123.Job%TYPE;
+    v_Salary EMPLOYEE123.Salary%TYPE;
+BEGIN
+    OPEN emp_cursor;
+
+    LOOP
+        FETCH emp_cursor INTO v_Empid, v_Name, v_Job, v_Salary;
+        EXIT WHEN emp_cursor%NOTFOUND;
+
+        DBMS_OUTPUT.PUT_LINE('EmpID: ' || v_Empid || ', Name: ' || v_Name || 
+                             ', Job: ' || v_Job || ', Salary: ' || v_Salary);
+    END LOOP;
+
+    CLOSE emp_cursor;
+END;
+
