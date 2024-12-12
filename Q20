@@ -1,0 +1,53 @@
+Create a table called EMP with the following structure.
+Name	Type
+----------  	----------------------
+EMPNO 		NUMBER(6)
+ENAME 		VARCHAR2(20)
+JOB                             VARCHAR2(10)
+DEPTNO                    NUMBER(3)
+SAL                             NUMBER(7,2)
+
+
+-----
+CREATE TABLE EMP (
+    EMPNO NUMBER(6) PRIMARY KEY,
+    ENAME VARCHAR2(20),
+    JOB VARCHAR2(10),
+    DEPTNO NUMBER(3),
+    SAL NUMBER(7,2));
+
+     Create Dept table with the following structure.
+
+Name	                Type
+---------        --- ---------------------
+DEPTNO	NUMBER(2)
+DNAME 	 VARCHAR2(10)
+LOC	          VARCHAR2(10)
+
+--
+CREATE TABLE DEPT (
+    DEPTNO NUMBER(2) PRIMARY KEY,
+    DNAME VARCHAR2(10),
+    LOC VARCHAR2(10));
+
+i) Insert into a single record in dept table
+INSERT INTO DEPT (DEPTNO, DNAME, LOC)
+VALUES (10, 'HR', 'New York');
+
+ ii)Display specify columns in emp table
+SELECT EMPNO, ENAME, SAL
+FROM EMP;
+
+ iii) Delete only the data working as Lecturer 
+DELETE FROM EMP
+WHERE JOB = 'Lecturer';
+
+iv) List the records in emp table by salary in ascending  order.
+SELECT *
+FROM EMP
+ORDER BY SAL ASC;
+
+v) Update the emp table to set salary of all employees to RS.14000 who are working as  Manager.
+UPDATE EMP
+SET SAL = 14000
+WHERE JOB = 'Manager';
